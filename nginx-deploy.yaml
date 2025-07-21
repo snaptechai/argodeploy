@@ -13,7 +13,7 @@ spec:
         app: nginx
     spec:
       containers:
-        - name: nginx
-          image: nginx:latest
+        - name: Dashboard
+          image: coolshano/static-html-app
           ports:
             - containerPort: 80
