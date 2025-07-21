@@ -3,11 +3,11 @@ name: Create Release with Notes
 on:
   push:
     tags:
-      - "v*.*.*" # e.g. v1.0.0
-  workflow_dispatch: # optional manual trigger
+      - "v*.*.*"
+  workflow_dispatch:
 
 permissions:
-  contents: write # required to create releases
+  contents: write
 
 jobs:
   release:
@@ -17,11 +17,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Set up GitHub CLI
-        uses: actions/setup-gh-cli@v2
-
-      - name: Ensure jq is installed
-        run: jq --version
+      - name: Install GitHub CLI
+        run: |
+          sudo apt update
+          sudo apt install -y gh jq
 
       - name: Generate release notes
         id: release_notes
